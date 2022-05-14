@@ -1,0 +1,198 @@
+@font-face {
+    font-family: 'minecraft-regular';
+    src: url('/fonts/minecraft-regular.otf');
+}
+@font-face {
+    font-family: 'minecraft-evening';
+    src: url('/fonts/minecraft-evening.ttf');
+}
+body {
+    background-image: url("/images/main-bg.png");
+    font-family: 'minecraft-regular';
+    
+}
+.title-container {
+    font-family: 'minecraft-evening';
+    font-size: 10vw;
+    color: beige;
+    display: flex;
+    position: absolute;
+    width: 40vw;
+    height: 29vh;
+    top: 24vh;
+    left: 30vw;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    background-color: #843f8a;
+}
+.form-container {
+    display: flex;
+    position: absolute;
+    width: 40vw;
+    height: 25vh;
+    top: 55vh;
+    left: 30vw;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    background-color: #843f8a;
+}
+#join-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input{
+    border: none;
+    padding: 1.5vh 1.5vw;
+    font-family: 'minecraft-regular';
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1vw;
+    cursor: default;
+    background-color: transparent;
+    border: 0.25vw solid beige;
+    border-radius: 1.5vw;
+}
+#name-input:focus{
+    background-color: beige;
+    color: black;
+}
+#room-input:focus{
+    background-color: beige;
+    color: black;
+}
+#name-input:hover{
+    background-color: beige;
+    color: black;
+    cursor: auto;
+}
+#room-input:hover{
+    background-color: beige;
+    color: black;
+    cursor: auto;
+}
+#name-input{
+    width: 10vw;
+    top: 1vh;
+    color: beige;
+    position: absolute;
+    font-size: 1.5vw;
+}
+#room-input{
+    width: 10vw;
+    top: 10vh;
+    color: beige;
+    position: absolute;
+    font-size: 1.5vw;
+}
+
+.button {
+    border: none;
+    color: beige;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1vw;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0.25vw solid beige;
+    border-radius: 1.5vw;
+    position: absolute;
+    top: 20vh;
+}
+.button-container{
+    position: absolute;
+    left: 32vw;
+    top: 55vh;
+    align-items: center;
+    text-align: center;
+}
+#join-button:hover{
+    background-color: beige;
+    color: black;
+}
+#join-button{
+    font-size: 1.5vw;
+    font-family: 'minecraft-regular';
+    text-align: center;
+    width: 10vw;
+    height: 6vh;
+}
+#info-button:hover{
+    background-color: beige;
+    color: black;
+}
+#info-button{
+    font-size: 1.5vw;
+    font-family: 'minecraft-regular';
+    text-align: center;
+    align-items: center;
+    left: 35vw;
+    top: 21vh;
+    border-radius: 1vw;
+    width: 2.5vw; 
+    height: 4vh; 
+}
+.container{
+    display: none;
+    background-color: #4a2e4d;
+    border: 0.25vw;
+    border-radius: 1.5vw;
+    position: absolute;
+    width: 40vw;
+    height: 58vh;
+    top: 24vh;
+    left: 30vw;
+    color: beige;
+    /* z-index: -10; */
+}
+#close-button:hover{
+    background-color: beige;
+    color: black;
+}
+#close-button{
+    position: absolute;
+    font-size: 1.5vw;
+    font-family: 'minecraft-regular';
+    border: 0.15vw solid beige;
+    border-radius: 0.5vw;
+    top: 1vh;
+    left: 1vw;
+    width: 2.5vw;
+}
+#player-desc{
+    position: absolute;
+    left: 20vw;
+    top: 10vh;
+}
+#enemy-desc{
+    position: absolute;
+    left: 20vw;
+    top: 28vh;
+}
+#feather-desc{
+    position: absolute;
+    left: 20vw;
+    top: 45vh;
+}
+#player-img{
+    position: absolute;
+    width: 10vw;
+    left: 2vw;
+    top: 5vh;
+}
+#enemy-img{
+    position: absolute;
+    width: 10vw;
+    left: 2vw;
+    top: 24vh;
+}
+#feather-img{
+    position: absolute;
+    width: 5vw;
+    left: 5vw;
+    top: 43vh;
+}

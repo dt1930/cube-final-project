@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <link href="styleIndex.css" rel="stylesheet">
+    <title>Start Page</title>
+</head>
+<body>
+    
+    <div class="title-container">
+        <p>CHASE</p>
+    </div>
+    <div class="form-container">
+        <form class="sub-container " id="join-form">
+            <input type="text" class="input" id="name-input" placeholder="Name" required/>
+            <input type="text" class="input" id="room-input" placeholder="Room Name" required/>
+            <button class="button" id="join-button">Join Room</button>
+        </form>
+    </div>
+    <div class="button-container">
+        <button class="button" id="info-button">i</button>
+    </div>
+    <div class="container" id="info-box">
+        <button class="button" id="close-button">X</button>
+        <img class="player" id="player-img" src="./images/faiza-big.png">
+        <p id="player-desc">control using arrow keys .</p>
+        <img class="enemy" id="enemy-img" src="./images/enemy-big.png">
+        <p id="enemy-desc">enemies are bad... avoid them .</p>
+        <img class="feather" id="feather-img" src="./images/big-feather1.png">
+        <p id="feather-desc">first player to 10 feathers wins .</p>
+    </div>
+    <script type="text/javascript" src="start.js"></script>
+</body>
+</html>
