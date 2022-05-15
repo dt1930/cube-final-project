@@ -1,73 +1,100 @@
-let express=require("express");
-let http=require("http");
-let app=express();
-let server=http.createServer(app);
-let Datastore=require('nedb');
-let currentUser;
+// setting up express
+let express = require("express");
+let http = require("http");
+let app = express();
 
-let serverObjectList = [];
-let serverMeshList = [];
+// creating http server
+let server  = http.createServer(app);
+
+// setting up nedb
+let Datastore = require('nedb');
 
 
 app.use('/',express.static('public'));
-let userDatabase=new Datastore('users.db');
-let memoryDatabase=new Datastore('memory.db');
-let meshDatabase=new Datastore('mesh.db');
+
+// setting up the databases
+let userDatabase = new Datastore('users.db'); // for user info
+let memoryDatabase = new Datastore('memory.db'); // for memory objects info (image string and description)
+let meshDatabase = new Datastore('mesh.db'); // for mesh info (position, color, rotation, scale attributes)
+
+// loading all the databases
 userDatabase.loadDatabase();
 memoryDatabase.loadDatabase();
 meshDatabase.loadDatabase();
 
-// app.use(express.bodyParser({limit:'100mb'}));
+// setting limit to 100mb to avoid size bug with image string
 app.use(express.json({limit:'100mb'}));
 app.use(express.urlencoded({
     limit: '100mb',
-  extended: true
+    extended: true
 }));
-app.post('/userInfo',(req,res)=>{
-    currentUser=req.body.name;
-    userDatabase.find({name:currentUser},(err,docs)=>{
-        if (docs.length==0){
+
+
+let currentUser; // variable to store username of current user
+
+
+// retrieving userInfo from client and checking if it exists
+app.post('/userInfo',(req,res) => {
+
+    currentUser = req.body.name;
+
+    // finding username objects inside the users.db database
+    userDatabase.find({name:currentUser}, (err, docs) => { 
+
+        // if user doesn't exist, add as a new user to the database
+        if (docs.length == 0) { 
             userDatabase.insert(req.body);
             res.send({status:true});
         }
-        else{
-            console.log(docs);
+
+        // if it does check password and send status response to the client accordingly
+        else {
             if (docs[0].password==req.body.password){
                 res.send({status:true});
             }
-            else{
+            else {
                 res.send({status:false});
             }
             
         }
     })
 })
-app.get('/userMemories',(req,res)=>{
-    memoryDatabase.find({name:currentUser},(err,docs)=>{
-        // console.log(docs.length);
-        // for (let i=0; i<docs.length; i++){
-        //     console.log(docs[i]);
-        // }
-        res.send({docs:docs});
+
+// sending memory objects that contain image string and description to the user
+app.get('/userMemories', (req, res) => {
+
+    memoryDatabase.find({name:currentUser}, (err, docs) => { // finding the memory objects associated with the current user
+        res.send({docs:docs}); // sending to the client side
+
     })
 })
-app.get('/userMeshes',(req,res)=>{
-    meshDatabase.find({name:currentUser},(err,docs)=>{
-        // console.log(docs.length);
-        // for (let i=0; i<docs.length; i++){
-        //     console.log(docs[i]);
-        // }
-        res.send({docs:docs});
+
+// sending mesh objects that contain image string and description to the user
+app.get('/userMeshes', (req,res) => {
+
+    meshDatabase.find({name:currentUser}, (err,docs) => { // finding the mesh objects associated with the current user
+        res.send({docs:docs}); // sending to the client side
+
     })
 })
-app.post('/memoryInfo',(req,res)=>{
-    // console.log(req.body);
+
+// storing memory objects that contain image string and description in the memory.db database
+app.post('/memoryInfo', (req,res) => {
+
     memoryDatabase.insert(req.body);
+
 })
-app.post('/meshInfo',(req,res)=>{
-    console.log(req.body);
+
+// storing mesh objects that contain mesh attributes in the mesh.db database
+app.post('/meshInfo', (req,res) => {
+
     meshDatabase.insert(req.body);
+
 })
-server.listen(2002,()=>{
-    console.log("Server running up");
+
+
+server.listen(2003, () => {
+
+    console.log("server is now up");
+
 })

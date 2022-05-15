@@ -1,26 +1,16 @@
 {
-  "name": "final-project",
+  "name": "interactive_cubes",
   "version": "1.0.0",
-  "main": "app.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dt1930/final-project.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dt1930/final-project/issues"
-  },
-  "homepage": "https://github.com/dt1930/final-project#readme",
   "dependencies": {
     "express": "^4.18.1",
-    "nedb": "^1.8.0",
-    "socket.io": "^4.5.0",
-    "three": "^0.140.0"
-  },
-  "description": ""
+    "nedb": "^1.8.0"
+  }
 }
